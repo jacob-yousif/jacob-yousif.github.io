@@ -190,6 +190,32 @@
                 padding-top: 20px;
             }
         }
+
+        #backToTop {
+            display: none;             /* Hidden by default */
+            position: fixed;           /* Fixed position */
+            bottom: 30px;              /* 30px from the bottom */
+            right: 30px;               /* 30px from the right */
+            z-index: 1100;             /* Sits above the nav bar */
+            border: none;              /* No borders */
+            outline: none;             /* No outline */
+            background-color: var(--accent); /* Uses your blue theme color */
+            color: white;              /* Arrow color */
+            cursor: pointer;           /* Pointer cursor on hover */
+            padding: 15px;             /* Some padding */
+            border-radius: 50%;        /* Makes it a circle */
+            font-size: 20px;           /* Size of the arrow */
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        #backToTop:hover {
+            background-color: #0ea5e9; /* Slightly darker blue on hover */
+            transform: scale(1.1);     /* Slightly grows on hover */
+        }
     </style>
 </head>
 <body>
@@ -314,10 +340,35 @@
             <p><strong>Professional:</strong> <a href="https://www.linkedin.com/in/-jacobyousif/">LinkedIn Profile</a></p>
         </section>
 
+        <button onclick="scrollToTop()" id="backToTop" title="🖱️ Scroll to the Top!">↑</button>
+
         <div class="footer">
             &copy; 2026 Jacob Yousif. Created with GitHub Pages.
         </div>
     </div>
 
 </body>
+
+<script>
+    // Get the button
+    const mybutton = document.getElementById("backToTop");
+
+    // When the user scrolls down 300px from the top, show the button
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    };
+
+    // When the user clicks, scroll to the top smoothly
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
 </html>
